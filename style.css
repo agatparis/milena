@@ -125,6 +125,18 @@ h1 {
 	color: black;
 	line-height: 3rem;
 }
+h2 {
+	font-size: 3.5em;
+	font-family: var(--bebas);
+	text-align: right;
+	font-weight: 100;	
+	color: black;
+	line-height: 3rem;
+}
+h3 {
+	font-family: var(--libre-franklin);
+	font-size: 2rem;
+}
 
 /* Grouping content
 	 ========================================================================== */
@@ -712,57 +724,96 @@ textarea {
 
 /* Navigation
 --------------------------------------------- */
-/*
-body {
-  font-family: "Fira Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-.site-content {
-  max-width: 100vw;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.site-content__headline {
-  font-weight: 200;
-  color: #ffffff;
-  font-size: calc(2vw + 10px);
-}
-*/
+.ham {
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: transform 400ms;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  }
+  .hamRotate.active2 {
+	transform: rotate(45deg);
+  }
+  .hamRotate180.active2 {
+	transform: rotate(180deg);
+  }
+  .line {
+	fill:none;
+	transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+	stroke:#000;
+	stroke-width:5.5;
+	stroke-linecap:round;
+  }
+  .ham3 .top {
+	stroke-dasharray: 40 130;
+  }
+  .ham3 .middle {
+	stroke-dasharray: 40 140;
+  }
+  .ham3 .bottom {
+	stroke-dasharray: 40 205;
+  }
+  .ham3.active2 .top {
+	stroke-dasharray: 75 130;
+	stroke-dashoffset: -63px;
+  }
+  .ham3.active2 .middle {
+	stroke-dashoffset: -102px;
+  }
+  .ham3.active2 .bottom {
+	stroke-dasharray: 110 205;
+	stroke-dashoffset: -86px;
+  }
+
 .menu-toggle {
   display: none;
 }
-
+/*
 .menu-icon {
-  height: 3rem;
-  width: 3rem;
+  height: 10rem;
+  width: 10rem;
   position: fixed;
   z-index: 2;
-  right: 2rem;
-  top: 4.75rem;
+  right: 1rem;
+  top: 2rem;
+  padding: 1rem;
   cursor: pointer;
+  background-color: #FFFFFF80;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.menu-icon__border {
+  position: fixed;
+  right: 1rem;
+  top: 3rem;
+  z-index: 3;
+  width: 9rem;
+  height: 9rem;
+  clip-path: polygon(0 0, 1% 0, 100% 99%, 100% 100%);
+  background-color: gray;
 }
 .menu-icon__line {
+  position: relative;
+  top: 2rem;
+  left: 5rem;
   height: .2rem;
   width: 3rem;
   display: block;
-  background-color: #1e2023;
+  background-color: black;
   margin-bottom: .45rem;
   transition: transform 0.2s ease, background-color 0.5s ease;
 }
 .menu-icon__line-left {
-  width: 1.5rem;
+  	width: 1.5rem;
+	  left: 6.5rem;
 }
 .menu-icon__line-right {
-  width: 1.5rem;
-  float: right;
+  	width: 1.5rem;	
+    left: 6.5rem;
 }
-
+*/
 .main-navigation {
   position: fixed;
   z-index: 1;
@@ -798,10 +849,11 @@ body {
   font-weight: 200;
   cursor: pointer;
 }
+/*
 .nav-menu {
   padding: 3px 0;
   margin: 0 10%;
-}
+}*/
 .menu-item {
   position: relative;
   display: inline-block;
@@ -811,21 +863,6 @@ body {
   transition: opacity 0.2s ease, transform 0.3s ease;
   margin-right: 25px;
 }
-/*
-.menu-item:before {
-  content: "";
-  position: relative;
-  background: #000000;
-  width: 20px;
-  height: .1rem;
-  transform: translate(0%, 0%);
-  transition: all 0.3s ease;
-  z-index: -1;
-  top: 10%;
-}
-.menu-item:hover:before {
-  width: 100%;
-}*/
 .menu-item a {
   color: black;
   font-family: var(--bebas);
@@ -838,9 +875,9 @@ body {
   color: var(--rose);
   transition: all 0.25s ease-out;
 }
-
+/*
 body.nav-active .menu-icon__line {
-  background-color: #000;
+  background-color: white;
   transform: translateX(0px) rotate(-45deg);
 }
 body.nav-active .menu-icon__line-left {
@@ -848,7 +885,7 @@ body.nav-active .menu-icon__line-left {
 }
 body.nav-active .menu-icon__line-right {
   transform: translateX(-2px) rotate(45deg);
-}
+}*/
 body.nav-active .main-navigation {
   visibility: visible;
 }
@@ -902,103 +939,8 @@ body.nav-active .menu-item:nth-child(9) {
 body.nav-active .menu-item:nth-child(11) {
 	transition-delay: 1.3s;
   }
+/* passage du menu sous le contenu */
 
-
-  /*
-
-.main-navigation {
-	display: block;
-	width: 100%;
-}
-
-.main-navigation ul {
-	display: none;
-	list-style: none;
-	margin: 0;
-	padding-left: 0;
-}
-
-.main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
-	position: absolute;
-	top: 100%;
-	left: -999em;
-	z-index: 99999;
-}
-
-.main-navigation ul ul ul {
-	left: -999em;
-	top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	display: block;
-	left: auto;
-}
-
-.main-navigation ul ul a {
-	width: 200px;
-}
-
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
-}
-
-.main-navigation li {
-	position: relative;
-}
-
-.main-navigation a {
-	display: block;
-	text-decoration: none;
-}*/
-
-/* Small menu. 
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-
-	.menu-toggle {
-		display: none;
-	}
-
-	.main-navigation ul {
-		display: flex;
-	}
-}
-
-.site-main .comment-navigation,
-.site-main
-.posts-navigation,
-.site-main
-.post-navigation {
-	margin: 0 0 1.5em;
-}
-
-.comment-navigation .nav-links,
-.posts-navigation .nav-links,
-.post-navigation .nav-links {
-	display: flex;
-}
-
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-	flex: 1 0 50%;
-}
-
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-	text-align: end;
-	flex: 1 0 50%;
-}*/
 
 /* Posts and pages
 --------------------------------------------- */
@@ -1233,3 +1175,26 @@ body.nav-active .menu-item:nth-child(11) {
 	margin-bottom: 1.5em;
 }
 
+/* Specifics templates 
+------------------------------------------------------------------------*/
+
+/* frontpage
+-------------------------------------------------- */
+
+.oeuvre_homesection_conteneur {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-top: solid 1px gray;
+	border-bottom: solid 1px gray;
+
+}
+.oeuvre_homesection_description {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 60%;
+}
+.oeuvre_homesection_image {
+	flex-basis: 40%;
+	padding: 5px 0 0 0 ;
+}

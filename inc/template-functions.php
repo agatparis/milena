@@ -91,12 +91,15 @@ function displaying_oeuvres_by_type () {
 				// boucles d'affichage des oeuvres par type
 				if ($oeuvres_group_query->have_posts()) : while ($oeuvres_group_query->have_posts()) : $oeuvres_group_query->the_post();
 					if (get_field('presente_en_page_daccueil')) : // test de l'affichage en homepage
-							the_title();
-							echo "<br>";
-							the_field('date');
+						echo "<div class='oeuvre_homesection_conteneur'>";
+							echo "<div class='oeuvre_homesection_description'>";
+							echo "<h3>".the_title()."</h3>";
+							echo "<span>".the_field('date')."</span>";
+							echo "</div><div class='oeuvre_homesection_image'>";
 							$image = get_field('image');
-							echo wp_get_attachment_image( $image, 'thumbnail' );					
-							echo "<br>";
+							echo wp_get_attachment_image( $image, 'full' );		
+							echo "</div>";
+						echo "</div>";		
 					endif;
 				endwhile;
 				endif;
