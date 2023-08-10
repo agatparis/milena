@@ -61,23 +61,32 @@ function displaying_oeuvres_by_type () {
 					),
 			) );
 			
-
+			// test du carctère parent de la taxonomie
 			if( ($oeuvres_group_term->parent==0) ) :
-				/* test de la présence d'oeuvres de ce type 
-				$getposts_args = array (
-					'tax_query' => array (
+				// test de la présence d'oeuvres dans ce type 
+				$args_have_oeuvre_in_type = array (
+					'post_type' => 'oeuvre',
+					'tax_query' 		=> array(
 						array (
 							'taxonomy' => 'type-doeuvre',
 							'field' => 'slug',
 							'terms' => $oeuvres_group_term->slug,
 							'operator' => 'IN',
-						)
+						),
+						),
+					'meta_query' => array(
+						array(
+							'key'   => 'presente_en_page_daccueil',
+							'value' => '1',
+						),
 					)
-				);
-				if (!get_posts($getposts_args)) :
+					);
+				$have_oeuvre = new WP_Query( $args_have_oeuvre_in_type );
+				if ( $have_oeuvre->have_posts() ) : 
 					echo "<h2>".$oeuvres_group_term->name."</h2>";
 					echo "<br>";
-				endif;*/
+				endif;
+
 				
 				// boucles d'affichage des oeuvres par type
 				if ($oeuvres_group_query->have_posts()) : while ($oeuvres_group_query->have_posts()) : $oeuvres_group_query->the_post();
@@ -85,8 +94,6 @@ function displaying_oeuvres_by_type () {
 							the_title();
 							echo "<br>";
 							the_field('date');
-							echo "<br>";
-							the_field('descriptif');
 							$image = get_field('image');
 							echo wp_get_attachment_image( $image, 'thumbnail' );					
 							echo "<br>";
