@@ -24,7 +24,7 @@ const menuIconCode = `
 </svg>
 `;
 
-document.getElementById("site-navigation").innerHTML += menuIconCode;
+document.getElementById("masthead").innerHTML += menuIconCode;
 
 const app = (() => {
   let body;

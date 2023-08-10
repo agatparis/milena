@@ -83,8 +83,9 @@ function displaying_oeuvres_by_type () {
 					);
 				$have_oeuvre = new WP_Query( $args_have_oeuvre_in_type );
 				if ( $have_oeuvre->have_posts() ) : 
+					echo "<div class='type-oeuvres-homesection'>";
 					echo "<h2>".$oeuvres_group_term->name."</h2>";
-					echo "<br>";
+					echo "</div>";
 				endif;
 
 				
@@ -94,7 +95,13 @@ function displaying_oeuvres_by_type () {
 						echo "<div class='oeuvre_homesection_conteneur'>";
 							echo "<div class='oeuvre_homesection_description'>";
 							echo "<h3>".the_title()."</h3>";
-							echo "<span>".the_field('date')."</span>";
+							echo "<div>".the_field('date')."</div>";
+							/*$oeuvre_parent_terms_ID = $oeuvres_group_term->id;
+							echo $oeuvre_parent_terms_ID;
+							$oeuvre_child_terms = get_term_children($oeuvre_parent_terms_ID, 'type-doeuvre');
+							foreach ($oeuvre_child_terms as $child_term) :
+								echo "<div>".$child_term."</div>";
+							endforeach;*/
 							echo "</div><div class='oeuvre_homesection_image'>";
 							$image = get_field('image');
 							echo wp_get_attachment_image( $image, 'full' );		

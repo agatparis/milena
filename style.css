@@ -77,7 +77,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------- */
 * {
 	--rose: #ebb2dc;
+	--border: gray;
 }
+
+/* Borders 
+--------------------------------------------- */
+* {
+	--border-style: solid 1px var(--border);
+	--blocs-margin: 4px -4px;
+}
+
+
 
 /* Normalize
 --------------------------------------------- */
@@ -104,6 +114,7 @@ html {
  */
 body {
 	margin: 0;
+	padding: 0 8rem 0 4rem;
 }
 
 /**
@@ -123,7 +134,7 @@ h1 {
 	text-align: left;
 	font-weight: 100;	
 	color: black;
-	line-height: 3rem;
+	line-height: 2.5rem;
 }
 h2 {
 	font-size: 3.5em;
@@ -132,6 +143,8 @@ h2 {
 	font-weight: 100;	
 	color: black;
 	line-height: 3rem;
+	margin: 0;
+	border-bottom: var(--border-style);
 }
 h3 {
 	font-family: var(--libre-franklin);
@@ -733,6 +746,12 @@ textarea {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	position: fixed;
+	z-index: 2;
+	right: 0;
+	background: white;
+	height: 100vh;
+	border-left: var(--border-style);
   }
   .hamRotate.active2 {
 	transform: rotate(45deg);
@@ -816,11 +835,11 @@ textarea {
 */
 .main-navigation {
   position: fixed;
-  z-index: 1;
   top: 0;
-  left: 0;
+  left: -5rem;
   height: 100vh;
   color: white;
+  margin: auto;
 }
 .main-navigation:before, .main-navigation:after {
   content: "";
@@ -889,6 +908,7 @@ body.nav-active .menu-icon__line-right {
 body.nav-active .main-navigation {
   visibility: visible;
 }
+
 body.nav-active .main-navigation:before, body.nav-active .main-navigation:after {
   transform: translateX(0%) translateY(0%);
 }
@@ -951,12 +971,12 @@ body.nav-active .menu-item:nth-child(11) {
 .post,
 .page {
 	margin: 0 .5rem 1.5em;
+	border-top: var(--border-style);
 }
 
 .entry-title {
 	margin: 0;
-	padding: 2rem 0 0;
-	border-bottom: solid 1px gray;
+	border-bottom: var(--border-style);
 }
 
 .updated:not(.published) {
@@ -966,12 +986,23 @@ body.nav-active .menu-item:nth-child(11) {
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	border-bottom: var(--border-style);
+	padding: 1rem 0 .5rem;
+}
+
+.entry-content {
+	margin: 3rem 0 0 0;
+	padding: 1rem 0 0 0;
 }
 
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.entry-header {
+	border-right: var(--border-style);
+	padding: 1rem 0 0 80%;
 }
 
 /* Comments
@@ -1185,9 +1216,6 @@ body.nav-active .menu-item:nth-child(11) {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	border-top: solid 1px gray;
-	border-bottom: solid 1px gray;
-
 }
 .oeuvre_homesection_description {
 	display: flex;
@@ -1197,4 +1225,9 @@ body.nav-active .menu-item:nth-child(11) {
 .oeuvre_homesection_image {
 	flex-basis: 40%;
 	padding: 5px 0 0 0 ;
+}
+.type-oeuvres-homesection {
+	border-left: var(--border-style);
+	border-top: var(--border-style);
+	padding: 3rem 80% 0 0;
 }
