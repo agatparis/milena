@@ -93,15 +93,20 @@ function displaying_oeuvres_by_type () {
 				if ($oeuvres_group_query->have_posts()) : while ($oeuvres_group_query->have_posts()) : $oeuvres_group_query->the_post();
 					if (get_field('presente_en_page_daccueil')) : // test de l'affichage en homepage
 						echo "<div class='oeuvre_homesection_conteneur'>";
-							echo "<div class='oeuvre_homesection_description'>";
-							echo "<h3>".the_title()."</h3>";
-							echo "<div>".the_field('date')."</div>";
-							/*$oeuvre_parent_terms_ID = $oeuvres_group_term->id;
-							echo $oeuvre_parent_terms_ID;
-							$oeuvre_child_terms = get_term_children($oeuvre_parent_terms_ID, 'type-doeuvre');
-							foreach ($oeuvre_child_terms as $child_term) :
-								echo "<div>".$child_term."</div>";
-							endforeach;*/
+									echo "<div class='oeuvre_homesection_description'>";
+												echo "<div class='oeuvre_homesection_text'>";
+															echo "<h3 class='oeuvre_homesection_title'>";
+														 echo the_title()."</h3>";
+															echo "<div class='oeuvre_homesection_date'>-- ";
+															echo the_field('date')."</div>";
+															$oeuvre = get_the_ID();
+															$oeuvre_terms = get_the_terms($oeuvre, 'type-doeuvre');
+															foreach ($oeuvre_terms as $term) :
+																if ($term->parent) :
+																echo "<div class='oeuvre_homesection_term'>".$term->name."</div>";
+																endif;
+															endforeach;
+												echo "</div>";
 							echo "</div><div class='oeuvre_homesection_image'>";
 							$image = get_field('image');
 							echo wp_get_attachment_image( $image, 'full' );		
