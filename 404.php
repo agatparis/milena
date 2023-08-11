@@ -27,7 +27,7 @@ get_header();
 					?>
 
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'milena-krastev' ); ?></h2>
+						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'milena-krastev' ); ?>test </h2>
 						<ul>
 							<?php
 							wp_list_categories(
