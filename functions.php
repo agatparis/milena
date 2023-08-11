@@ -142,7 +142,8 @@ function milena_krastev_scripts() {
 	wp_style_add_data( 'milena-krastev-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'milena-krastev-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'milena-krastev-menu-concept', get_template_directory_uri() . '/js/menu-concept.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'milena-krastev-menu-concept', get_template_directory_uri() . '/js/menu-concept.js', array(), _S_VERSION, true );	
+	wp_enqueue_script( 'milena-krastev-scriptsperso', get_template_directory_uri() . '/js/scriptsperso.js', array(), _S_VERSION, true );
 	
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
