@@ -26,7 +26,7 @@ const menuIconCode = `
 
 const menuIconCode = `
 <div class="ham ham3" onclick="this.classList.toggle('active2')">
-  <span class="line">MENU</span>
+  <span class="line" id="menu-button">MENU</span>
 </div>
 `;
 

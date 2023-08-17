@@ -722,7 +722,7 @@ textarea {
 	height: 37px;
 	width: 45px;
 	transform: rotate(180deg) scaleX(-1);
-	transition: all 200ms ease-out;
+	transition: all 80ms ease-out;
 }
 
 
@@ -1165,14 +1165,14 @@ body.nav-active .menu-item:nth-child(11) {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-clip: content-box;
-	opacity: 0.3;
+	opacity: 0.1;
 	transition: all .75s ease;
  }
  .oeuvre_homesection_conteneur:hover {
 	transition: all .8s ease;
 	opacity: 1;
  }
- .oeuvre_homesection_conteneur:hover ~ .tax_link {
+ .oeuvres_homesection_conteneur div:hover .tax_link {
 	transition: all .6s ease;
 	display: none;
  }
@@ -1183,7 +1183,7 @@ body.nav-active .menu-item:nth-child(11) {
 	transition: all .75s ease;
 	color: black;
 	position: relative;
-	bottom: 50vh;
+	bottom: 80vh;
 	background: transparent;
 	font-family: var(--ysabeau);
 	text-transform: uppercase;
