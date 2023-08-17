@@ -150,7 +150,6 @@ h2 {
 	line-height: 2rem;
 	margin: 0;
 	padding: 0 0 .5rem 0;
-	border-bottom: var(--border-style);
 }
 h3 {
 	font-family: var(--libre-franklin);
@@ -735,8 +734,6 @@ textarea {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	border-bottom: var(--border-style);
-	border-right: var(--border-style);
 }
 .site-branding {
 	padding: 1.3rem 0 .3rem 0;
@@ -793,6 +790,7 @@ textarea {
   height: 100vh;
   color: white;
   margin: auto;
+  z-index: 10;
 }
 .main-navigation:before, .main-navigation:after {
   content: "";
@@ -916,7 +914,6 @@ body.nav-active .menu-item:nth-child(11) {
 
 .entry-title {
 	margin: 0;
-	border-bottom: var(--border-style);
 }
 
 .updated:not(.published) {
@@ -926,7 +923,6 @@ body.nav-active .menu-item:nth-child(11) {
 .page-content,
 .entry-content,
 .entry-summary {
-	border-bottom: var(--border-style);
 	padding: 1rem 0 .5rem;
 }
 
@@ -1152,22 +1148,50 @@ body.nav-active .menu-item:nth-child(11) {
 /* frontpage
 -------------------------------------------------- */
 
-.oeuvre_homesection_conteneur {
+.oeuvres_homesection_conteneur {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 100%;
 }
-.oeuvre_homesection_description {
-	display: flex;
-	flex-direction: column;
-	flex-basis: 60%;
-}
-.oeuvre_homesection_image {
-	flex-basis: 40%;
-	padding: 5px 0 0 0 ;
-}
-.type-oeuvres-homesection {
-	border-left: var(--border-style);
-	border-top: var(--border-style);
-	padding: 3rem 80% 0 0;
-}
+.oeuvres_homesection_conteneur div {
+	flex-basis: 49%;	
+	height: 120vh;
+	margin-bottom: 1%;
+ }
+ .oeuvre_homesection_conteneur {
+	height: 120vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-clip: content-box;
+	opacity: 0.3;
+	transition: all .75s ease;
+ }
+ .oeuvre_homesection_conteneur:hover {
+	transition: all .8s ease;
+	opacity: 1;
+ }
+ .oeuvre_homesection_conteneur:hover ~ .tax_link span {
+	transition: all .6s ease;
+	opacity: 0;
+ }
+ .tax_link {
+	text-align: center;
+ }
+ .tax_link span {
+	transition: all .75s ease;
+	color: black;
+	position: relative;
+	bottom: 50vh;
+	background: transparent;
+	font-family: var(--ysabeau);
+	text-transform: uppercase;
+	font-size: 3rem;
+	text-decoration: none;
+ }
+
+
+
+
+

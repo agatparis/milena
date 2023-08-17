@@ -41,74 +41,40 @@ add_action( 'wp_head', 'milena_krastev_pingback_header' );
  */
 
 function displaying_oeuvres_by_type () {
-		$args_oeuvres_group_query = array (
-			'taxonomy' => 'type-doeuvre',
-			'meta_key' => 'ordre',
-			'orderby' => 'meta_value',
-		);
+	echo "<div class='oeuvres_homesection_conteneur'>";
 
-		$oeuvres_group_terms = get_terms( $args_oeuvres_group_query );		
-		foreach ( $oeuvres_group_terms as $oeuvres_group_term ) :
-			$oeuvres_group_query = new WP_Query( array(
-				'post_type'			=> 'oeuvre',
-				'tax_query' 		=> array(
-					array (
-						'taxonomy' => 'type-doeuvre',
-						'field' => 'slug',
-						'terms' => array( $oeuvres_group_term->slug ),
-						'operator' => 'IN',
-					)
+			$oeuvres_home_query = new WP_Query( array(
+				'post_type'	=> 'oeuvre',				
+				'meta_query' => array(
+					array(
+						'key'   => 'presente_en_page_daccueil',
+						'value' => '1',
 					),
-			) );
-			
-			// test du carctère parent de la taxonomie
-			if( ($oeuvres_group_term->parent==0) ) :
-				// test de la présence d'oeuvres dans ce type 
-				$args_have_oeuvre_in_type = array (
-					'post_type' => 'oeuvre',
-					'tax_query' 		=> array(
-						array (
-							'taxonomy' => 'type-doeuvre',
-							'field' => 'slug',
-							'terms' => $oeuvres_group_term->slug,
-							'operator' => 'IN',
-						),
-						),
-					'meta_query' => array(
-						array(
-							'key'   => 'presente_en_page_daccueil',
-							'value' => '1',
-						),
-					)
-					);
-				$have_oeuvre = new WP_Query( $args_have_oeuvre_in_type );
-				if ( $have_oeuvre->have_posts() ) : 
-					echo "<div class='type-oeuvres-homesection'>";
-					echo "<h2>".$oeuvres_group_term->name."</h2>";
+				),
+				'orderby' => 'name',
+				'order' => 'RAND',
+			),
+			);
+
+
+
+			if ($oeuvres_home_query->have_posts()) : while ($oeuvres_home_query->have_posts()) : $oeuvres_home_query->the_post();
+					$oeuvre_taxonomies = get_the_terms( get_the_ID() , 'type-doeuvre');
+					echo "<div><div class='oeuvre_homesection_conteneur' style='background-image:url(".get_field('image').")'></div><div class='tax_link'>";
+						foreach ($oeuvre_taxonomies as $oeuvre_taxonomy) :					
+							if ($oeuvre_taxonomy->parent==0) :				
+							$link = get_term_link($oeuvre_taxonomy->slug, 'type-doeuvre');	
+							echo "<span>".$oeuvre_taxonomy->name."<span>";
+							endif;
+						endforeach;
+					echo "</div></div>";
+			endwhile;
+			endif;	 
+
 					echo "</div>";
-				endif;
-
-				
-				// boucles d'affichage des oeuvres par type
-				if ($oeuvres_group_query->have_posts()) : while ($oeuvres_group_query->have_posts()) : $oeuvres_group_query->the_post();
-					if (get_field('presente_en_page_daccueil')) : // test de l'affichage en homepage
-						echo "<div class='oeuvre_homesection_conteneur'>";
-							/*echo "<div class='oeuvre_homesection_description'>";
-							echo "<h3>".the_title()."</h3>";
-							echo "<div>".the_field('date')."</div>";
-							echo "</div>*/ 
-							echo "<div class='oeuvre_homesection_image'>";
-							$image = get_field('image');
-							echo wp_get_attachment_image( $image, 'full' );		
-							echo "</div>";
-						echo "</div>";		
-					endif;
-				endwhile;
-				endif;
-			endif;
+		wp_reset_postdata();
 
 
-		endforeach;
 	}
 add_action( 'displaying_oeuvres_by_type',  'displaying_oeuvres_by_type' );
 
