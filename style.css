@@ -790,7 +790,6 @@ textarea {
   height: 100vh;
   color: white;
   margin: auto;
-  z-index: 10;
 }
 .main-navigation:before, .main-navigation:after {
   content: "";
@@ -847,6 +846,7 @@ textarea {
 }
 body.nav-active .main-navigation {
   visibility: visible;
+  z-index: 10;
 }
 body.nav-active .main-navigation:before, body.nav-active .main-navigation:after {
   transform: translateX(0%) translateY(0%);
@@ -1172,9 +1172,9 @@ body.nav-active .menu-item:nth-child(11) {
 	transition: all .8s ease;
 	opacity: 1;
  }
- .oeuvre_homesection_conteneur:hover ~ .tax_link span {
+ .oeuvre_homesection_conteneur:hover ~ .tax_link {
 	transition: all .6s ease;
-	opacity: 0;
+	display: none;
  }
  .tax_link {
 	text-align: center;
