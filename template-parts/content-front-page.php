@@ -34,7 +34,7 @@
 
 	<div class="entry-content">
 <?php
-			 do_action( 'displaying_oeuvres_by_type' );                          
+			 do_action( 'displaying_oeuvres_by_type_gallery' );                          
 ?>
 		<?php 
 		?>

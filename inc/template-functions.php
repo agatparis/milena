@@ -79,4 +79,35 @@ function displaying_oeuvres_by_type () {
 	}
 add_action( 'displaying_oeuvres_by_type',  'displaying_oeuvres_by_type' );
 
+function displaying_oeuvres_by_type_gallery() {
 
+	echo "<div class='gallery-wrap'>";
+	$oeuvres_home_query_gallery = new WP_Query( array(
+		'post_type'	=> 'oeuvre',				
+		'meta_query' => array(
+			array(
+				'key'   => 'presente_en_page_daccueil',
+				'value' => '1',
+			),
+		),
+		'orderby' => 'name',
+		'order' => 'RAND',
+	),
+	);
+	if ($oeuvres_home_query_gallery->have_posts()) : while ($oeuvres_home_query_gallery->have_posts()) : $oeuvres_home_query_gallery->the_post();
+	$oeuvre_taxonomies_gallery = get_the_terms( get_the_ID() , 'type-doeuvre');
+	foreach ($oeuvre_taxonomies_gallery as $oeuvre_taxonomy_gallery) :					
+		if ($oeuvre_taxonomy_gallery->parent==0) :	
+			$link = get_term_link($oeuvre_taxonomy_gallery->slug, 'type-doeuvre');
+			echo "<div class='gallery-item' style='background-image:url(".get_field('image').")'>";
+			echo "<div class='gallery-items-title'><a href='".$link."'>".$oeuvre_taxonomy_gallery->name."</a></div>";
+			echo "</div>";
+		endif;
+	endforeach;
+	endwhile;
+	endif;	 
+	wp_reset_postdata();
+	echo "</div>";
+
+}
+add_action( 'displaying_oeuvres_by_type_gallery',  'displaying_oeuvres_by_type_gallery' );
