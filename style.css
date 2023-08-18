@@ -1160,21 +1160,25 @@ body.nav-active .menu-item:nth-child(11) {
 	height: 120vh;
 	margin-bottom: 1%;
  }
+ .oeuvre_homesection_conteneur:hover {
+	opacity: 0.1;
+	transition: all .75s ease;
+ }
  .oeuvre_homesection_conteneur {
 	height: 120vh;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-clip: content-box;
-	opacity: 0.1;
-	transition: all .75s ease;
- }
- .oeuvre_homesection_conteneur:hover {
 	transition: all .8s ease;
 	opacity: 1;
  }
- .oeuvres_homesection_conteneur div:hover .tax_link {
+ .oeuvres_homesection_conteneur div .tax_link {
 	transition: all .6s ease;
 	display: none;
+ }
+ .oeuvres_homesection_conteneur div:hover .tax_link {
+	transition: all .6s ease;
+	display: block;
  }
  .tax_link {
 	text-align: center;
