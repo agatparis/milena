@@ -33,12 +33,6 @@ const menuIconCode = `
 
 document.getElementById("masthead").innerHTML += menuIconCode;
 
-navigation = document.querySelector(".main-navigation");
-
-document
-  .getElementById("menu-close-item")
-  .addEventListener("click", () => (navigation.style.display = "none"));
-
 const app = (() => {
   let body;
   let menu;
@@ -46,20 +40,18 @@ const app = (() => {
 
   const init = () => {
     body = document.querySelector("body");
-    menu = document.querySelector(".ham");
+    menuOpen = document.getElementById("menu-open-item");
+    menuClose = document.getElementById("menu-close-item");
     menuItems = document.querySelectorAll(".nav__list-item");
 
     applyListeners();
   };
 
   const applyListeners = () => {
-    menu.addEventListener("click", () => toggleClass(body, "nav-active"));
-  };
-
-  const toggleClass = (element, stringClass) => {
-    if (element.classList.contains(stringClass))
-      element.classList.remove(stringClass);
-    else element.classList.add(stringClass);
+    menuOpen.addEventListener("click", () => body.classList.add("nav-active"));
+    menuClose.addEventListener("click", () =>
+      body.classList.remove("nav-active")
+    );
   };
 
   init();
