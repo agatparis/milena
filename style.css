@@ -822,7 +822,7 @@ textarea {
 }
 .menu-menu-1-container {
   position: fixed;
-  top: 50%;
+  top: -30%;
   transform: translate(0%, -50%);
   width: 100%;
   padding-left: 20rem;
@@ -840,7 +840,6 @@ textarea {
   opacity: 0;
   position: relative;
   display: inline-block;
-  /*transition-delay: 2s;*/
   transform: translate(0%, 100%);
   transition: opacity 2s ease 0, transform 28s ease 2s;
   margin-right: 25px;
@@ -865,10 +864,14 @@ body.nav-active .main-navigation {
   z-index: 10;
   transition: all .5s ease;
 }
+body.nav-active .nav-menu {
+	display: block;
+}
 body.nav-active .main-navigation:before, body.nav-active .main-navigation:after {
   transform: translateX(0%) translateY(0%);
   opacity: 1;
   transition: all 1s ease-in-out;
+  z-index: -100;
 }
 body.nav-active .main-navigation:after {
   transition-delay: 0.1s;
@@ -877,7 +880,7 @@ body.nav-active .main-navigation:before {
   transition-delay: 0s;
 }
 body.nav-active .menu-menu-1-container {
-	z-index: 1;
+	top: 50%;
 }
 body.nav-active #menu-open-item {
 	display: none;
