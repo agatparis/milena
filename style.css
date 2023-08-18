@@ -800,7 +800,7 @@ textarea {
   height: 100vh;
   color: white;
   margin: auto;
-  transition: all .5s ease-in;
+  transition: all .3s ease-in;
 }
 .main-navigation:before, .main-navigation:after {
   opacity: 0;
