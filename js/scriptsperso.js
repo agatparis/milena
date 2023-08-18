@@ -18,7 +18,7 @@ links.forEach((link) => {
     cursor.style.transition = "all 1ms ease";
   });
 });
-
+/*
 document
   .getElementById("menu-open-close-item")
   .addEventListener("mouseover", function () {
@@ -32,4 +32,4 @@ document
     cursor.style.display = "block";
     cursor.style.opacity = "1";
     cursor.style.transition = "all 1ms ease";
-  });
+  });*/
