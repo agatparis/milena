@@ -100,8 +100,8 @@ function displaying_oeuvres_by_type_gallery() {
 		if ($oeuvre_taxonomy_gallery->parent==0) :	
 			$link = get_term_link($oeuvre_taxonomy_gallery->slug, 'type-doeuvre');
 			echo "<div class='gallery-item' style='background-image:url(".get_field('image').")'>";
-			echo "<div class='gallery-items-title'><a href='".$link."'>".$oeuvre_taxonomy_gallery->name."</a></div>";
-			echo "</div>";
+			echo "<a href='".$link."'><div class='gallery-item-section'><div class='gallery-items-title'>".$oeuvre_taxonomy_gallery->name."</div>";
+			echo "</div></a></div>";
 		endif;
 	endforeach;
 	endwhile;

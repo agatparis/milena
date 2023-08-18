@@ -116,7 +116,6 @@ html {
  */
 body {
 	margin: 0;
-	padding: 0 8rem 0 4rem;
 }
 
 /**
@@ -736,7 +735,7 @@ textarea {
 	justify-content: space-between;
 }
 .site-branding {
-	padding: 1.3rem 0 .3rem 0;
+	padding: 1.3rem 0 .3rem 1.3rem;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
@@ -935,7 +934,7 @@ body.nav-active .menu-item:nth-child(9) {
 
 .post,
 .page {
-	margin: 0 .5rem 1.5em;
+	margin: 0;
 }
 
 .entry-title {
@@ -1243,19 +1242,30 @@ body.nav-active .menu-item:nth-child(9) {
   .gallery-item:hover {
 	flex: 7;
   }
+  .gallery-item-section {
+	height: 100%;
+  }
   .gallery-items-title {  
 	width: 100%;
 	background: black;   
 	padding: .3rem 1rem;
 	border-bottom: solid 1px white;
-  }
-  a {
 	font-family: 'Ysabeau', sans-serif;
-	color: white;
+	font-size: 1.4rem;
+	color: white;	
 	text-decoration: none;
 	position: relative;
 	bottom: 0;
+	text-transform: uppercase;
   }
 
+  /*
+  .gallery-item a {
+
+  }
+  .gallery-item a:hover,  .gallery-item a:active,  .gallery-item a:visited {
+	color: white;
+  }
+*/
 
 
