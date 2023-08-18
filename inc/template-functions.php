@@ -64,11 +64,11 @@ function displaying_oeuvres_by_type () {
 						foreach ($oeuvre_taxonomies as $oeuvre_taxonomy) :					
 							if ($oeuvre_taxonomy->parent==0) :	
 								$link = get_term_link($oeuvre_taxonomy->slug, 'type-doeuvre');
-								echo "<div><a href='".$link."'><div class='oeuvre_homesection_conteneur' style='background-image:url(".get_field('image').")'></div><a><div class='tax_link'>";			
-								echo "<span>".$oeuvre_taxonomy->name."<span>";
+								echo "<a href='".$link."'><div><div class='oeuvre_homesection_conteneur' style='background-image:url(".get_field('image').")'></div><div class='tax_link'>";			
+								echo "<span>".$oeuvre_taxonomy->name."</span>";
 							endif;
 						endforeach;
-					echo "</div></div>";
+					echo "</div></div></a>";
 			endwhile;
 			endif;	 
 

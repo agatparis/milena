@@ -25,12 +25,19 @@ const menuIconCode = `
 `;*/
 
 const menuIconCode = `
-<div class="ham ham3" onclick="this.classList.toggle('active2')">
-  <span class="line" id="menu-button">MENU</span>
+<div id="menu-open-close-item" class="ham ham3" onclick="this.classList.toggle('active2')">
+  <span id="menu-open-item">MENU</span>
+  <span id="menu-close-item">CLOSE</span>
 </div>
 `;
 
 document.getElementById("masthead").innerHTML += menuIconCode;
+
+navigation = document.querySelector(".main-navigation");
+
+document
+  .getElementById("menu-close-item")
+  .addEventListener("click", () => (navigation.style.display = "none"));
 
 const app = (() => {
   let body;

@@ -781,11 +781,21 @@ textarea {
 	font-size: 1.3rem;
 	padding: 0 1rem;
   }
+#menu-open-item {
+	opacity: 1;	
+	transition: all .2s ease;
+  }
+#menu-close-item {
+	display: none;
+	opacity: 0;
+	transition: all .2s ease;
+}
 .menu-toggle {
   display: none;
 }
 .main-navigation {
   position: fixed;
+  opacity: 0;
   left: -5rem;
   height: 100vh;
   color: white;
@@ -817,6 +827,7 @@ textarea {
   font-size: calc(2vw + 10px);
   font-weight: 200;
   cursor: pointer;
+  z-index: -10; 
 }
 .nav-menu {
   padding: 3px 0;
@@ -845,8 +856,10 @@ textarea {
   transition: all 0.25s ease-out;
 }
 body.nav-active .main-navigation {
+  opacity: 1;
   visibility: visible;
   z-index: 10;
+  transition: all .5s ease;
 }
 body.nav-active .main-navigation:before, body.nav-active .main-navigation:after {
   transform: translateX(0%) translateY(0%);
@@ -856,6 +869,18 @@ body.nav-active .main-navigation:after {
 }
 body.nav-active .main-navigation:before {
   transition-delay: 0s;
+}
+body.nav-active .menu-menu-1-container {
+	z-index: 1;
+}
+body.nav-active #menu-open-item {
+	display: none;
+	opacity: 0;
+}
+body.nav-active #menu-close-item {
+	display: block;
+	opacity: 1;
+	transition: all .2s ease;
 }
 body.nav-active .menu-item {
   opacity: 1;
@@ -1152,48 +1177,48 @@ body.nav-active .menu-item:nth-child(11) {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
 	width: 100%;
 }
-.oeuvres_homesection_conteneur div {
-	flex-basis: 49%;	
-	height: 120vh;
-	margin-bottom: 1%;
+.oeuvres_homesection_conteneur a {
+	flex-basis: 35%;
+	text-decoration: none;
+	height: 80vh;
+	padding: 1rem;
+	margin-bottom: 2rem;
  }
- .oeuvre_homesection_conteneur:hover {
-	opacity: 0.1;
-	transition: all .75s ease;
- }
+
+ 
  .oeuvre_homesection_conteneur {
-	height: 120vh;
+	height: 80vh;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-clip: content-box;
-	transition: all .8s ease;
+	transition: all .5s ease;
 	opacity: 1;
+ } 
+ .oeuvre_homesection_conteneur:hover {
+	opacity: 0.1;
+	transition: all .5s ease;
  }
- .oeuvres_homesection_conteneur div .tax_link {
-	transition: all .6s ease;
+ .oeuvres_homesection_conteneur .tax_link {
+	transition: all .5s ease;
 	display: none;
  }
- .oeuvres_homesection_conteneur div:hover .tax_link {
-	transition: all .6s ease;
+ .oeuvre_homesection_conteneur:hover ~ .tax_link {
+	transition: all .5s ease;
 	display: block;
- }
- .tax_link {
-	text-align: center;
- }
- .tax_link span {
-	transition: all .75s ease;
 	color: black;
 	position: relative;
-	bottom: 80vh;
+	bottom: 30vh;
 	background: transparent;
 	font-family: var(--ysabeau);
 	text-transform: uppercase;
-	font-size: 3rem;
-	text-decoration: none;
+	font-size: 2rem;
+	text-align: center;
  }
+
+ 
 
 
 
