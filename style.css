@@ -771,9 +771,9 @@ textarea {
 	-ms-user-select: none;
 	user-select: none;
 	position: fixed;
-	top: 48vh;
+	top: 3rem;
 	z-index: 2;
-	right: 0;
+	right: 1rem;
 	background: white;
 	height: 100vh;
 	font-family: var(--ysabeau);
@@ -796,7 +796,7 @@ textarea {
 .main-navigation {
   position: fixed;
   opacity: 0;
-  left: -5rem;
+  left: -10rem;
   height: 100vh;
   color: white;
   margin: auto;
@@ -825,6 +825,7 @@ textarea {
   top: 50%;
   transform: translate(0%, -50%);
   width: 100%;
+  padding-left: 20rem;
   text-align: center;
   font-size: calc(2vw + 10px);
   font-weight: 200;
