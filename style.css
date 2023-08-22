@@ -739,6 +739,7 @@ textarea {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
+	z-index: 500;
 }
 
 .site-title {
@@ -1229,6 +1230,8 @@ body.nav-active .menu-item:nth-child(9) {
 	flex-direction: row;
 	width: 100%;
 	height: 80vh;
+	position: fixed;
+	top: 20vh;
   }
   
   .gallery-item {
@@ -1258,14 +1261,12 @@ body.nav-active .menu-item:nth-child(9) {
 	bottom: 0;
 	text-transform: uppercase;
   }
-
-  /*
   .gallery-item a {
-
+	text-decoration: none;
   }
   .gallery-item a:hover,  .gallery-item a:active,  .gallery-item a:visited {
 	color: white;
   }
-*/
+
 
 

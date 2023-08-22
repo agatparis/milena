@@ -36,16 +36,3 @@ document
     cursor.style.opacity = "1";
     cursor.style.transition = "all 1ms ease";
   });
-
-const brandingLink = document.querySelector(".site-title a");
-
-brandingLink.addEventListener("mouseover", function () {
-  cursor.style.display = "none";
-  cursor.style.opacity = "0";
-  cursor.style.transition = "all 1ms ease";
-});
-brandingLink.addEventListener("mouseout", function () {
-  cursor.style.display = "block";
-  cursor.style.opacity = "1";
-  cursor.style.transition = "all 1ms ease";
-});
