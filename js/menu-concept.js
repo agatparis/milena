@@ -35,24 +35,24 @@ document.getElementById("masthead").innerHTML += menuIconCode;
 
 const app = (() => {
   let body;
-  let menu;
+  /*  let menu;
   let menuItems;
 
-  const init = () => {
-    body = document.querySelector("body");
-    menuOpen = document.getElementById("menu-open-item");
-    menuClose = document.getElementById("menu-close-item");
+  const init = () => {*/
+  body = document.querySelector("body");
+  menuOpen = document.getElementById("menu-open-item");
+  menuClose = document.getElementById("menu-close-item"); /*
     menuItems = document.querySelectorAll(".nav__list-item");
-
+/*
     applyListeners();
   };
 
-  const applyListeners = () => {
-    menuOpen.addEventListener("click", () => body.classList.add("nav-active"));
-    menuClose.addEventListener("click", () =>
-      body.classList.remove("nav-active")
-    );
-  };
+  const applyListeners = () => {*/
+  menuOpen.addEventListener("click", () => body.classList.add("nav-active"));
+  menuClose.addEventListener("click", () =>
+    body.classList.remove("nav-active")
+  );
+  /*  };
 
-  init();
+  init();*/
 })();
