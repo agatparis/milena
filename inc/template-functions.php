@@ -55,23 +55,19 @@ function displaying_oeuvres_by_type () {
 
 
 			if ($oeuvres_home_query->have_posts()) : while ($oeuvres_home_query->have_posts()) : $oeuvres_home_query->the_post();
-				foreach($oeuvres_home_query as $oeuvre_home_query) :
-					/*oeuvre_taxonomies = get_the_terms( get_the_ID() , 'type-doeuvre');
+				
+					$oeuvre_taxonomies = get_the_terms( get_the_ID() , 'type-doeuvre');
 					foreach ($oeuvre_taxonomies as $oeuvre_taxonomy) :	
-						if ($oeuvre_taxonomy->parent) :
+						if ($oeuvre_taxonomy->parent==0) :
 							$tax_link = $oeuvre_taxonomy->slug;
 							$tax_name = $oeuvre_taxonomy->name;							
 						endif;
-					endforeach;*/
-					echo "<a href='"./*$oeuvre_home_query->slug*/."'>";
+					endforeach;
+					echo "<a href='".get_permalink($oeuvres_home_query->ID)."'>";
 					echo "<div class='oeuvre-home-wrap' style='background:url(".get_field('image').")'>";
-					echo "<div class='oeuvre-home-content'>"./*$oeuvre_home_query->name*/."</div>";
-					echo "</div></a>";
+					echo "<span>".$tax_name."</span></div></a>";
 
 
-			
-
-				endforeach;
 			endwhile;
 			endif;	
 /*
