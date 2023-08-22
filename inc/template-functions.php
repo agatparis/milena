@@ -44,55 +44,36 @@ function displaying_oeuvres_by_type () {
 	echo "<div class='oeuvres_homesection_conteneur'>";
 
 			$oeuvres_home_query = new WP_Query( array(
-				'post_type'	=> 'oeuvre',				
-				'meta_key' => 'presente_en_page_daccueil',
-				'meta_value' => '1',
-				'orderby' => 'name',
-				'order' => 'RAND',
+				'post_type'	=> 'oeuvre',
+				'meta_query' => array(
+					array (
+						'key' => 'presente_en_page_daccueil',
+						'value' => 1,
+					)
+				),				
+				'meta_key' => 'ordre_dapparition_sur_la_page_daccueil',
+				'orderby' => 'meta_value',
+				'order' => 'ASC',
+				'posts_per_page' => 20,
 			),
-			);
+			);		
 
-
-
-			if ($oeuvres_home_query->have_posts()) : while ($oeuvres_home_query->have_posts()) : $oeuvres_home_query->the_post();
-				foreach($oeuvres_home_query as $oeuvre_home_query) :
-					/*oeuvre_taxonomies = get_the_terms( get_the_ID() , 'type-doeuvre');
+			if ($oeuvres_home_query->have_posts()) : while ($oeuvres_home_query->have_posts()) : $oeuvres_home_query->the_post() ;
+					$oeuvre_ID = get_the_ID();
+					$oeuvre_taxonomies = get_the_terms( $oeuvre_ID, 'type-doeuvre');
 					foreach ($oeuvre_taxonomies as $oeuvre_taxonomy) :	
 						if ($oeuvre_taxonomy->parent) :
-							$tax_link = $oeuvre_taxonomy->slug;
-							$tax_name = $oeuvre_taxonomy->name;							
+							$tax_name = $oeuvre_taxonomy->name;
+							$tax_link = get_term_link( $oeuvre_taxonomy->parent, 'type-doeuvre' );				
 						endif;
-					endforeach;*/
-					echo "<a href='"./*$oeuvre_home_query->slug*/."'>";
+					endforeach;
+					echo "<a href='".$tax_link."'>";
 					echo "<div class='oeuvre-home-wrap' style='background:url(".get_field('image').")'>";
-					echo "<div class='oeuvre-home-content'>"./*$oeuvre_home_query->name*/."</div>";
+					echo "<div class='oeuvre-home-content'>".$tax_name."</div>";
 					echo "</div></a>";
-
-
-			
-
-				endforeach;
-			endwhile;
+				endwhile;
 			endif;	
-/*
-			$link = get_term_link($oeuvres_home_query->slug, 'type-doeuvre');
-			echo "<a href='".$link."'>";
-			echo "<div class='oeuvre-home-wrap' style='background:url(".get_field('image').")'>";
-			echo "<div class='oeuvre-home-content'>".$oeuvres_home_query->name."</div>";
-			echo "</div></a>";
-/*
-					$oeuvre_taxonomies = get_the_terms( get_the_ID() , 'type-doeuvre');
-						foreach ($oeuvre_taxonomies as $oeuvre_taxonomy) :					
-							if (!$oeuvre_taxonomy->parent) :	
-								$link = get_term_link($oeuvre_taxonomy->slug, 'type-doeuvre');
-								echo "<a href='".$link."'>";
-									echo "<div class='oeuvre-home-wrap' style='background:url(".get_field('image').")'>";
-									echo "<div class='oeuvre-home-content'>".$oeuvre_taxonomy->name."</div>";
-									echo "</div></a>";
-							endif;
-						endforeach;
-			endwhile;
-			endif;	 */
+
 
 					echo "</div>";
 		wp_reset_postdata();

@@ -1178,19 +1178,16 @@ body.nav-active .menu-item:nth-child(9) {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: max-content;
 	max-width: 100vw;
 	margin: auto;
 }
 .oeuvres_homesection_conteneur a {
-	width: 320px;
-	height: 448px;
-	margin: 5px;	
+	padding: 5px;	
 	text-decoration: none;
 }
  .oeuvre-home-wrap {
-	width: 320px;
-	height: 448px;
+	width: 310px;
+	height: 439px;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
   }
