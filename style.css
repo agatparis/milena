@@ -735,7 +735,7 @@ textarea {
 	justify-content: space-between;
 }
 .site-branding {
-	padding: 1.3rem 0 .3rem 0;
+	padding: 1.3rem 0 .3rem 1rem;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
@@ -746,7 +746,7 @@ textarea {
 	width: 100%;
 }
 .site-title {
-	padding-left: 1rem;
+	padding-left: 1.4rem;
 	margin: 0;
 	z-index: 500;
 }
@@ -812,17 +812,17 @@ textarea {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: #FFFFFF80;
+  background: white;
   z-index: -1;
-  transition: all cubic-bezier(0.77, 0, 0.175, 1) 0.4s;
+  transition: all /*cubic-bezier(0.77, 0, 0.175, 1)*/ ease-in 0.4s;
   transform: translateX(0%) translateY(-100%);
 }
 .main-navigation:after {
   background: white;
-  transition-delay: 0s;
+  transition-delay: 0.5s;
 }
 .main-navigation:before {
-  transition-delay: 0.1s;
+  transition-delay: 0s;
 }
 .menu-menu-1-container {
   position: fixed;
@@ -841,7 +841,7 @@ textarea {
   opacity: 0;
   position: relative;
   display: inline-block;
-  /*transition-delay: 2s;*/
+  transition-delay: 2s;
   transform: translate(0%, 100%);
   transition: opacity 2s ease 0, transform 28s ease 2s;
   margin-right: 25px;
@@ -1246,8 +1246,6 @@ body.nav-active .menu-item:nth-child(9) {
 }
 .footer-container section p {
 	margin: 0;
-}
-.footer-container section:nth-child(2) {
 	font-size: .85rem;
 }
 .footer-container section a {
