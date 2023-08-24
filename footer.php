@@ -18,6 +18,15 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+
+<div class='footer-container'>
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer1'))?>
+
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer2'))?>
+
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer3'))?>
+</div>
+
 <?php wp_footer(); ?>
 
 <svg class="svg">

@@ -66,11 +66,28 @@ function displaying_oeuvres_by_type () {
 							$tax_name = $oeuvre_taxonomy->name;
 							$tax_link = get_term_link( $oeuvre_taxonomy->parent, 'type-doeuvre' );				
 						endif;
+						if ($oeuvre_taxonomy->parent == 0) :
+							$tax_parent_name = $oeuvre_taxonomy->name;
+						endif ;
 					endforeach;
 					echo "<a href='".$tax_link."'>";
 					echo "<div class='oeuvre-home-wrap' style='background:url(".get_field('image').")'>";
-					echo "<div class='oeuvre-home-content'>".$tax_name."</div>";
-					echo "</div></a>";
+					echo "<div class='oeuvre-home-content'>";
+					echo "<div class='oeuvre-home-tax'>";
+					echo $tax_parent_name;
+					echo "</div>";
+					if ($tax_parent_name != $tax_name) :
+						echo "<div class='oeuvre-home-subtax'>";
+						echo $tax_name;
+						echo "</div>";
+					endif;
+					echo "<div class='oeuvre-home-title'>";
+					echo the_title();
+					echo "</div>";
+					echo "<div class='oeuvre-home-year'>";
+					echo the_field('date');
+					echo "</div>";
+					echo "</div></div></a>";
 				endwhile;
 			endif;	
 
