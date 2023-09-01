@@ -712,15 +712,15 @@ textarea {
 	pointer-events: none;
 	/*left: -100px;
 	top: 50%;*/
-	mix-blend-mode: difference;
-	background: white;
-	-webkit-clip-path: url(#my-clip-path);
-	clip-path: url(#my-clip-path);
+	/*mix-blend-mode: difference;
+	background: white;*/
+	background-image: url(http://milena.local/wp-content/uploads/2023/08/souris.webp);
+	/*clip-path: url(#http://milena.local/wp-content/uploads/2023/08/souris.webp);*/
 	z-index: 10000;
-	border: 2px solid white;
+	/*border: 2px solid white;*/
 	height: 37px;
 	width: 45px;
-	transform: rotate(180deg) scaleX(-1);
+	/*transform: rotate(180deg) scaleX(-1);*/
 	transition: all 80ms ease-out;
 }
 
@@ -754,7 +754,7 @@ textarea {
 	font-family: var(--bebas);
 	color: black;
 	text-decoration: none;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	line-height: 2.5rem;
 	transition: all 0.25s ease-out;
 }
@@ -776,13 +776,13 @@ textarea {
 	-ms-user-select: none;
 	user-select: none;
 	position: absolute;
-	top: 3.7rem;
+	top: 1.5rem;
 	z-index: 500;
 	right: 1rem;
 	height: 10vh;
 	font-family: var(--ysabeau);
 	font-weight: 500;
-	font-size: 1.3rem;
+	font-size: 1rem;
 	padding: 0 1rem;
   }
 #menu-open-item {

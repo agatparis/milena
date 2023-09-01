@@ -23,7 +23,8 @@
 <body <?php body_class(); ?>>
 
 	
-<div class='cursor' id="cursor"></div>
+<div class='cursor' id="cursor">
+<img src="http://milena.local/wp-content/uploads/2023/08/souris.webp"/></div>
 
 
 
