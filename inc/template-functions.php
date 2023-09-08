@@ -100,3 +100,56 @@ function displaying_oeuvres_by_type () {
 add_action( 'displaying_oeuvres_by_type',  'displaying_oeuvres_by_type' );
 
 
+function displaying_oeuvres_from_type () {
+
+	echo "<div class='oeuvres_archive_grid'>";
+
+	// recup de la liste des sous-catégories d'oeuvres
+	$current_cat = get_queried_object(); 
+	$current_cat_children =  get_term_children($current_cat->term_id, 'type-doeuvre');	
+
+	//recup des formats d'oeuvres pour les catégories de l'archive	
+	$formats = get_terms( array (
+		 'taxonomy' => 'format',			
+		),
+	);
+
+		foreach ($formats as $format) :
+
+			$args_oeuvres = array (
+				'post_type' => 'oeuvre',
+				'tax_query' => array (
+					array (
+						'taxonomy' => 'type-doeuvre',
+						'terms' =>  $current_cat_children, 
+					),
+					array(
+						'taxonomy' => 'format',
+						'terms' => $format,
+					),
+				),
+			);
+			$oeuvres_from_cat = new WP_Query($args_oeuvres);
+			$i = 0;
+			echo "<div class='oeuvre_row'>";
+			if ($oeuvres_from_cat->have_posts()) : while ($oeuvres_from_cat->have_posts()) : $oeuvres_from_cat->the_post();
+			
+				echo "<div class='oeuvre_card'>";
+					$image = get_field('image');
+					echo "<img src='".$image."'>";
+				echo "</div>";
+			
+			$i++;
+				endwhile;
+			endif;
+			echo "</div>";
+		endforeach;
+
+
+// affichage de la mosaique en maconnerie
+
+
+	echo "</div>";
+wp_reset_postdata();
+}
+add_action( 'displaying_oeuvres_from_type',  'displaying_oeuvres_from_type' );

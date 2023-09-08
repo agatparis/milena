@@ -63,5 +63,13 @@
 				)
 			);
 			?>
+
+<div class='footer-menu'>
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer1'))?>
+
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer2'))?>
+
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer3'))?>
+</div>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
