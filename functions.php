@@ -19,6 +19,8 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+
 function milena_krastev_setup() {
 	/*
 		* Make theme available for translation.
@@ -180,7 +182,8 @@ function milena_krastev_scripts() {
 	wp_enqueue_script( 'milena-krastev-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'milena-krastev-menu-concept', get_template_directory_uri() . '/js/menu-concept.js', array(), _S_VERSION, true );	
 	wp_enqueue_script( 'milena-krastev-scriptsperso', get_template_directory_uri() . '/js/scriptsperso.js', array(), _S_VERSION, true );
-	
+	wp_enqueue_script( 'milena-krastev-single-panel', get_template_directory_uri() . '/js/single-panel.js', array( 'jquery' ), '1.0.0', true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -130,26 +130,112 @@ function displaying_oeuvres_from_type () {
 				),
 			);
 			$oeuvres_from_cat = new WP_Query($args_oeuvres);
-			$i = 0;
+			
 			echo "<div class='oeuvre_row'>";
 			if ($oeuvres_from_cat->have_posts()) : while ($oeuvres_from_cat->have_posts()) : $oeuvres_from_cat->the_post();
-			
-				echo "<div class='oeuvre_card'>";
-					$image = get_field('image');
-					echo "<img src='".$image."'>";
+				echo "<a href='".get_permalink()."'>";
+				
+				$image = get_field('image');
+				$hauteur = get_field('hauteur', $format);
+				echo "<div class='oeuvre_card' style='background-image:url(".$image."); height:".$hauteur."px'>";
+				echo "<div class='oeuvre-cat-content' style='height:".$hauteur."px;'>";
+				// sub cat	
+				$cat_child = get_the_terms( get_the_ID(), 'type-doeuvre' );
+				foreach ($cat_child as $current_cat_child) :
+					if ($current_cat_child->parent) :
+						echo "<div class='oeuvre-cat-subtax'>";
+						echo $current_cat_child->name;
+						echo "</div>";
+					endif;
+				endforeach;
+				
+				echo "<div class='oeuvre-cat-title'>";
+					echo the_title();
+					echo "</div>";
+					echo "<div class='oeuvre-cat-year'>";
+					echo the_field('date');
 				echo "</div>";
-			
-			$i++;
+				echo "</div>";
+				echo "</div>";
+				echo "</a>";
 				endwhile;
 			endif;
 			echo "</div>";
 		endforeach;
 
-
-// affichage de la mosaique en maconnerie
-
-
 	echo "</div>";
 wp_reset_postdata();
 }
 add_action( 'displaying_oeuvres_from_type',  'displaying_oeuvres_from_type' );
+
+
+function displaying_oeuvres_single () {
+	echo "<div class='single_content'>";
+
+	echo "<div class='single_images'>";
+	// recup des images
+	$images_tab = array();
+	
+	$images_tab[0] = get_field('image');
+	$i = 1;
+	$images_galerie = get_field('galerie');
+	if ($images_galerie) :
+		foreach( $images_galerie as $image_galerie ): 
+			$images_tab[$i] = esc_url($image_galerie['url']);
+			$i++;
+		endforeach;
+	endif;
+
+
+	// affichage des images en diaporama
+	echo "<div id='tabs' class='single_galerie'>";
+
+	
+
+    echo "<ul id='accordion' class=single_slides'>";
+	for ($j = 0; $j<count($images_tab); $j++) :
+		echo "<li>";
+		if ($j == 0) :
+			echo "<a href='#tabs-".$j."' class='active'>";
+		else :
+			echo "<a href='#tabs-".$j."'>";
+		endif; 
+			echo "<div class='tag'>";
+			/*echo "<div class='icon'>";
+			echo "<div class='block'>";
+				echo "<div class='circle'></div>";
+			echo "</div>";
+			echo "</div>";*/
+			echo "<div class='single_slide_thumbnail'><img src='".$images_tab[$j]."'></div>";
+			echo "</div>";
+		echo "</a>";
+		echo "</li>";
+	endfor;
+	echo "</ul>";
+
+	reset($images_tab);
+	echo "<div class='browser'>";
+		echo "<div class='top-bar'>";		
+			echo "<span class='dot'><img src='http://milena.local/wp-content/uploads/2023/08/souris.webp'><span class='dot-title'>".get_the_title()."</span></span>"; 
+		echo "</div>";
+	for ($k = 0; $k<count($images_tab); $k++) :
+			echo "<div id='tabs-".$k."'><img src='".$images_tab[$k]."'></div>"; 
+		endfor;
+		echo "</div>";
+	echo "</div>";
+	echo "</div>";
+
+
+	echo "<div class='single_descr'>";
+	the_title( '<h1 class="entry-title">', '</h1>' );
+	echo "<h4>".get_field('date')."</h4>";
+	echo "<p>".get_field('descriptif')."</p>";
+	echo "</div>";
+
+	echo "</div>";
+	
+	wp_reset_postdata();
+
+
+}
+add_action( 'displaying_oeuvres_single',  'displaying_oeuvres_single' );

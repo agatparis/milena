@@ -24,9 +24,8 @@ get_header();
 
 			<?php
 
-do_action( 'displaying_oeuvres_from_type' );                          
+			do_action( 'displaying_oeuvres_from_type' );                          
 
-			//the_posts_navigation();
 
 		else :
 
